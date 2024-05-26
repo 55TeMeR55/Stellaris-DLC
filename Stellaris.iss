@@ -4,7 +4,7 @@
 #define GameName "Stellaris"                                          ; Название игры
 #define GameNameDash "Stellaris"                                          ; Название игры
 #define GameNameEXE "stellaris"                                                              ; Название exe файла игры
-#define GameVer "3.10"                                                                     ; Версия игры
+#define GameVer "3.12"                                                                     ; Версия игры
 #define GameAppIdSteam "281990"                                                             ; Ид игры в стиме
 ; От ситуации зависит
 #define AppDescription "DLC для Stellaris"                                     ; Описание программы
@@ -129,6 +129,10 @@ Name: "dlc\028"; Description: "Toxoids Species Pack";               Flags: check
 Name: "dlc\029"; Description: "First Contact Pack";               Flags: checkablealone; Types: full compact
 Name: "dlc\030"; Description: "Galactic Paragons";               Flags: checkablealone; Types: full compact
 Name: "dlc\031"; Description: "Astral Planes";               Flags: checkablealone; Types: full compact
+Name: "dlc\032"; Description: "The Machine Age";               Flags: checkablealone; Types: full compact
+;Name: "dlc\033"; Description: "";               Flags: checkablealone; Types: full compact
+;Name: "dlc\034"; Description: "";               Flags: checkablealone; Types: full compact
+Name: "dlc\035"; Description: "Rick the Cube Species Portrait";               Flags: checkablealone; Types: full compact
 
 [Files]
 ; Ресурсы  ExternalSize - cmd dir
@@ -165,7 +169,10 @@ Source: "{tmp}\dlc027_overlord.zip";                DestDir: "{tmp}"; Components
 Source: "{tmp}\dlc028_toxoids.zip";                DestDir: "{tmp}"; Components: dlc\028; Flags: external deleteafterinstall; ExternalSize:  41731770
 Source: "{tmp}\dlc029_firstcontact.zip";                DestDir: "{tmp}"; Components: dlc\029; Flags: external deleteafterinstall; ExternalSize:  92795
 Source: "{tmp}\dlc030_paragon.zip";                DestDir: "{tmp}"; Components: dlc\030; Flags: external deleteafterinstall; ExternalSize:  92577
-Source: "{tmp}\dlc031_astral_planes.zip";                DestDir: "{tmp}"; Components: dlc\031; Flags: external deleteafterinstall; ExternalSize:  47153026
+Source: "{tmp}\dlc031_astral_planes.zip";                DestDir: "{tmp}"; Components: dlc\031; Flags: external deleteafterinstall; ExternalSize:  47153025
+Source: "{tmp}\dlc032_machine_age.zip";                DestDir: "{tmp}"; Components: dlc\032; Flags: external deleteafterinstall; ExternalSize:  120816588
+
+Source: "{tmp}\dlc035_rick_the_cube.zip";                DestDir: "{tmp}"; Components: dlc\035; Flags: external deleteafterinstall; ExternalSize:  78582
 
 [Icons]
 ;Ярлык
@@ -217,6 +224,8 @@ Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc028_toxoids.zip  -y -o
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc029_firstcontact.zip  -y -o""{app}\dlc\""";        Components: dlc\029
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc030_paragon.zip  -y -o""{app}\dlc\""";        Components: dlc\030
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc031_astral_planes.zip  -y -o""{app}\dlc\""";        Components: dlc\031
+Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc032_machine_age.zip  -y -o""{app}\dlc\""";        Components: dlc\032
+Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc035_rick_the_cube.zip  -y -o""{app}\dlc\""";        Components: dlc\035
 
 [UninstallDelete]
 Type: files; 		  Name: "{app}\cream_api.ini";                                   Components: crack  
@@ -265,6 +274,9 @@ Type: filesandordirs; Name: "{app}\dlc\dlc028_toxoids";                 Componen
 Type: filesandordirs; Name: "{app}\dlc\dlc029_firstcontact";                 Components: dlc\029
 Type: filesandordirs; Name: "{app}\dlc\dlc030_paragon";                 Components: dlc\030
 Type: filesandordirs; Name: "{app}\dlc\dlc031_astral_planes";                 Components: dlc\031
+Type: filesandordirs; Name: "{app}\dlc\dlc032_machine_age";                 Components: dlc\032
+Type: filesandordirs; Name: "{app}\dlc\dlc035_rick_the_cube";                 Components: dlc\035
+
 [Code]
 var
   InstallationPath: string;
@@ -313,7 +325,7 @@ begin
   if CurPageID = wpReady then begin
     DownloadPage.Clear;// sha256 7z
 	if IsComponentSelected('crack') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/crack.zip', 'crack.zip', 'a540c01621007cf79cd384f31b9e6e589d7cda27b18873664e4dbe2f5f627e84');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/crack.zip', 'crack.zip', '1b7ac371eb6baae57a27f401d513b8e3f5dd4e7e51e3d9fec03d423b341783cb');
     end;
 	if IsComponentSelected('dlc\ebook') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/ebook.zip', 'ebook.zip', '446b963ada19176fb9e75f5298fd1e5819a983f486e74d7d69cb7afc8bf25026');
@@ -389,24 +401,32 @@ begin
   if IsComponentSelected('dlc/025') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc025_nemesis.zip', 'dlc025_nemesis.zip', '02c583a1cc1d533a6d66a02948080f426258bd9550d5682a709dd70471fe3270');
     end;
-   if IsComponentSelected('dlc/026') then begin
+  if IsComponentSelected('dlc/026') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc026_aquatics.zip', 'dlc026_aquatics.zip', 'bc93061624e0dffe7edd60995d78894079d550dc3ff1ca2e861047beed1b2ce2');
     end;
-   if IsComponentSelected('dlc/027') then begin
+  if IsComponentSelected('dlc/027') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc027_overlord.zip', 'dlc027_overlord.zip', 'cedf8d32500d2043d2228facb85f5b10f0559901460d2a4b2c67a90365015cc4');
     end;
-   if IsComponentSelected('dlc/028') then begin
+  if IsComponentSelected('dlc/028') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc028_toxoids.zip', 'dlc028_toxoids.zip', 'ba1ece340c7a79655e4f9b5e2d42dd105bcfd4fbaaa5a602c9bc4640bcfd7c83');
     end;
-   if IsComponentSelected('dlc/029') then begin
+  if IsComponentSelected('dlc/029') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc029_firstcontact.zip', 'dlc029_firstcontact.zip', '14d8e5338c06ee0aa1354e9e8613be62315a1d494c8a2ae7eb9012326c394191');
     end;
-   if IsComponentSelected('dlc/030') then begin
+  if IsComponentSelected('dlc/030') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc030_paragon.zip', 'dlc030_paragon.zip', '7d1db1ad806cd893919ad5d6cfdd4431f267e1cc5297bb36d6a7845624798502');
     end;
-   if IsComponentSelected('dlc/031') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc031_astral_planes.zip', 'dlc031_astral_planes.zip', '10119a87cce3b1fd747bdde3bbc6cb2e4d240863785a01e34cce006a03090a46');
+  if IsComponentSelected('dlc/031') then begin
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc031_astral_planes.zip', 'dlc031_astral_planes.zip', '2093181738e2bef0d0777ed43906842c7b58f143c814db50a6e5c4f8ce6c07e0');
     end;
+  if IsComponentSelected('dlc/032') then begin
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc032_machine_age.zip', 'dlc032_machine_age.zip', 'd6561c91c29e90554299241517e601efedd6fa0983cf8349da916f1184457a16');
+    end;
+
+  if IsComponentSelected('dlc/035') then begin
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc035_rick_the_cube.zip', 'dlc035_rick_the_cube.zip', 'd0aa5f90abaa727caff20091d3caa5ee29e9ff6bdd5f34fedb8a60924b1b48bd');
+    end;
+    
     DownloadPage.Show;
     try
       try
