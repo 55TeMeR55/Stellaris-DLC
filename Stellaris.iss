@@ -131,7 +131,7 @@ Name: "dlc\030"; Description: "Galactic Paragons";               Flags: checkabl
 Name: "dlc\031"; Description: "Astral Planes";               Flags: checkablealone; Types: full compact
 Name: "dlc\032"; Description: "The Machine Age";               Flags: checkablealone; Types: full compact
 Name: "dlc\033"; Description: "Cosmic Storms";               Flags: checkablealone; Types: full compact
-;Name: "dlc\034"; Description: "Grand Archive";               Flags: checkablealone; Types: full compact
+Name: "dlc\034"; Description: "Grand Archive";               Flags: checkablealone; Types: full compact
 Name: "dlc\035"; Description: "Rick the Cube Species Portrait";               Flags: checkablealone; Types: full compact
 
 [Files]
@@ -172,7 +172,7 @@ Source: "{tmp}\dlc030_paragon.zip";                DestDir: "{tmp}"; Components:
 Source: "{tmp}\dlc031_astral_planes.zip";                DestDir: "{tmp}"; Components: dlc\031; Flags: external deleteafterinstall; ExternalSize:  47153025
 Source: "{tmp}\dlc032_machine_age.zip";                DestDir: "{tmp}"; Components: dlc\032; Flags: external deleteafterinstall; ExternalSize:  120816588
 Source: "{tmp}\dlc033_cosmic_storms.zip";                DestDir: "{tmp}"; Components: dlc\033; Flags: external deleteafterinstall; ExternalSize:  89757
-;Source: "{tmp}\dlc034_grand_archive.zip";                DestDir: "{tmp}"; Components: dlc\034; Flags: external deleteafterinstall; ExternalSize:  32001
+Source: "{tmp}\dlc034_grand_archive.zip";                DestDir: "{tmp}"; Components: dlc\034; Flags: external deleteafterinstall; ExternalSize:  32001
 Source: "{tmp}\dlc035_rick_the_cube.zip";                DestDir: "{tmp}"; Components: dlc\035; Flags: external deleteafterinstall; ExternalSize:  78582
 
 [Icons]
@@ -227,7 +227,7 @@ Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc030_paragon.zip  -y -o
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc031_astral_planes.zip  -y -o""{app}\dlc\""";        Components: dlc\031
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc032_machine_age.zip  -y -o""{app}\dlc\""";        Components: dlc\032
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc033_cosmic_storms.zip  -y -o""{app}\dlc\""";        Components: dlc\033
-;Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc034_grand_archive.zip  -y -o""{app}\dlc\""";        Components: dlc\034
+Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc034_grand_archive.zip  -y -o""{app}\dlc\""";        Components: dlc\034
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc035_rick_the_cube.zip  -y -o""{app}\dlc\""";        Components: dlc\035
 
 [UninstallDelete]
@@ -279,7 +279,7 @@ Type: filesandordirs; Name: "{app}\dlc\dlc030_paragon";                 Componen
 Type: filesandordirs; Name: "{app}\dlc\dlc031_astral_planes";                 Components: dlc\031
 Type: filesandordirs; Name: "{app}\dlc\dlc032_machine_age";                 Components: dlc\032
 Type: filesandordirs; Name: "{app}\dlc\dlc033_cosmic_storms";                 Components: dlc\033
-;Type: filesandordirs; Name: "{app}\dlc\dlc034_grand_archive";                 Components: dlc\034
+Type: filesandordirs; Name: "{app}\dlc\dlc034_grand_archive";                 Components: dlc\034
 Type: filesandordirs; Name: "{app}\dlc\dlc035_rick_the_cube";                 Components: dlc\035
 
 [Code]
@@ -430,9 +430,9 @@ begin
   if IsComponentSelected('dlc/033') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc033_cosmic_storms.zip', 'dlc033_cosmic_storms.zip', 'b371c59a30a70410cff44bc2524f35be8d6e563c258b278ba7992bafd09ab047');
     end;
-//  if IsComponentSelected('dlc/034') then begin
-//      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.14/dlc034_grand_archive.zip', 'dlc034_grand_archive.zip', 'e20b30f39d9de0fb68a44ffaf1fa14b40df19c19c6571fa7e15da8898b5925be');
-//    end;
+  if IsComponentSelected('dlc/034') then begin
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.14/dlc034_grand_archive.zip', 'dlc034_grand_archive.zip', 'e20b30f39d9de0fb68a44ffaf1fa14b40df19c19c6571fa7e15da8898b5925be');
+    end;
   if IsComponentSelected('dlc/035') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc035_rick_the_cube.zip', 'dlc035_rick_the_cube.zip', 'fd8ea394296de2f98363e5bd5b91b95275c0d08b931484073e4cb9d28c142210');
     end;
