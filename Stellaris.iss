@@ -4,7 +4,7 @@
 #define GameName "Stellaris"                                          ; Название игры
 #define GameNameDash "Stellaris"                                          ; Название игры
 #define GameNameEXE "stellaris"                                                              ; Название exe файла игры
-#define GameVer "3.12"                                                                     ; Версия игры
+#define GameVer "3.13"                                                                     ; Версия игры
 #define GameAppIdSteam "281990"                                                             ; Ид игры в стиме
 ; От ситуации зависит
 #define AppDescription "DLC для Stellaris"                                     ; Описание программы
@@ -130,8 +130,8 @@ Name: "dlc\029"; Description: "First Contact Pack";               Flags: checkab
 Name: "dlc\030"; Description: "Galactic Paragons";               Flags: checkablealone; Types: full compact
 Name: "dlc\031"; Description: "Astral Planes";               Flags: checkablealone; Types: full compact
 Name: "dlc\032"; Description: "The Machine Age";               Flags: checkablealone; Types: full compact
-;Name: "dlc\033"; Description: "";               Flags: checkablealone; Types: full compact
-;Name: "dlc\034"; Description: "";               Flags: checkablealone; Types: full compact
+Name: "dlc\033"; Description: "Cosmic Storms";               Flags: checkablealone; Types: full compact
+;Name: "dlc\034"; Description: "Grand Archive";               Flags: checkablealone; Types: full compact
 Name: "dlc\035"; Description: "Rick the Cube Species Portrait";               Flags: checkablealone; Types: full compact
 
 [Files]
@@ -171,7 +171,8 @@ Source: "{tmp}\dlc029_firstcontact.zip";                DestDir: "{tmp}"; Compon
 Source: "{tmp}\dlc030_paragon.zip";                DestDir: "{tmp}"; Components: dlc\030; Flags: external deleteafterinstall; ExternalSize:  92577
 Source: "{tmp}\dlc031_astral_planes.zip";                DestDir: "{tmp}"; Components: dlc\031; Flags: external deleteafterinstall; ExternalSize:  47153025
 Source: "{tmp}\dlc032_machine_age.zip";                DestDir: "{tmp}"; Components: dlc\032; Flags: external deleteafterinstall; ExternalSize:  120816588
-
+Source: "{tmp}\dlc033_cosmic_storms.zip";                DestDir: "{tmp}"; Components: dlc\033; Flags: external deleteafterinstall; ExternalSize:  89757
+;Source: "{tmp}\dlc034_grand_archive.zip";                DestDir: "{tmp}"; Components: dlc\034; Flags: external deleteafterinstall; ExternalSize:  32001
 Source: "{tmp}\dlc035_rick_the_cube.zip";                DestDir: "{tmp}"; Components: dlc\035; Flags: external deleteafterinstall; ExternalSize:  78582
 
 [Icons]
@@ -225,6 +226,8 @@ Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc029_firstcontact.zip  
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc030_paragon.zip  -y -o""{app}\dlc\""";        Components: dlc\030
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc031_astral_planes.zip  -y -o""{app}\dlc\""";        Components: dlc\031
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc032_machine_age.zip  -y -o""{app}\dlc\""";        Components: dlc\032
+Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc033_cosmic_storms.zip  -y -o""{app}\dlc\""";        Components: dlc\033
+;Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc034_grand_archive.zip  -y -o""{app}\dlc\""";        Components: dlc\034
 Filename: "{tmp}\{#UnArcivProg}"; Parameters: "x {tmp}\dlc035_rick_the_cube.zip  -y -o""{app}\dlc\""";        Components: dlc\035
 
 [UninstallDelete]
@@ -275,6 +278,8 @@ Type: filesandordirs; Name: "{app}\dlc\dlc029_firstcontact";                 Com
 Type: filesandordirs; Name: "{app}\dlc\dlc030_paragon";                 Components: dlc\030
 Type: filesandordirs; Name: "{app}\dlc\dlc031_astral_planes";                 Components: dlc\031
 Type: filesandordirs; Name: "{app}\dlc\dlc032_machine_age";                 Components: dlc\032
+Type: filesandordirs; Name: "{app}\dlc\dlc033_cosmic_storms";                 Components: dlc\033
+;Type: filesandordirs; Name: "{app}\dlc\dlc034_grand_archive";                 Components: dlc\034
 Type: filesandordirs; Name: "{app}\dlc\dlc035_rick_the_cube";                 Components: dlc\035
 
 [Code]
@@ -340,91 +345,96 @@ begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/wallpaper.zip', 'wallpaper.zip', 'ee28b4520e085172768cba8bb3f0b8a55669d7f11e502f227f4b69bb0648c922');
     end;
   if IsComponentSelected('dlc/001') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc001_symbols_of_domination.zip', 'dlc001_symbols_of_domination.zip', '97335fc6862f9dd19381fa3d3a8cb96784386ea3c22ca04f7f835e5e09f36ec8');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc001_symbols_of_domination.zip', 'dlc001_symbols_of_domination.zip', 'cccbbe2622670d6504904e773a517e44425a653115e08b066e3bfc9685c29e4e');
     end;
 	if IsComponentSelected('dlc/002') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc002_arachnoid.zip', 'dlc002_arachnoid.zip', 'b253b0f2a3f79ba0abdc6ebecd0643b73d844f10a56a1cf1f660f880a3235202');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc002_arachnoid.zip', 'dlc002_arachnoid.zip', '312b1b349929f601ae25f9454c9ed2327cbfa77db2f636b32e721e9db9bde746');
     end;
 	if IsComponentSelected('dlc/003') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc003_signup_bonus.zip', 'dlc003_signup_bonus.zip', '80268fb419fb85e86a90d79c0d44501915436bb792c24229039b2847c60b100d');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc003_signup_bonus.zip', 'dlc003_signup_bonus.zip', '48529e90765186436a521454a551c1bc2f9c7f5c70c113402208ebe407cdbd30');
     end;
 	if IsComponentSelected('dlc/004') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc004_plantoid.zip', 'dlc004_plantoid.zip', 'e2b63717aa857a4b3986b2e1177ee5efd414b10bf69dfc132f54afa84a41e391');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc004_plantoid.zip', 'dlc004_plantoid.zip', '50607a7e51e95f6df19a1809a5fa785ac0dc58b6884c0edac475e625d78641ab');
     end;
 	if IsComponentSelected('dlc/005') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc005_novel.zip', 'dlc005_novel.zip', '918fbeae87d43840f5faeb533683d4a07d578f0eb06b3483a0e62db53f21f9d9');
     end;
 
 	if IsComponentSelected('dlc/010') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc010_creatures_of_the_void.zip', 'dlc010_creatures_of_the_void.zip', 'd6e965c236f3f8733a08a8b776467e7ea17c4801d57b7f0c6f827503a77f49fd');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc010_creatures_of_the_void.zip', 'dlc010_creatures_of_the_void.zip', 'ae1b50f04c21551ec920c83a251c93cd45546f5db58d301c992955f7bff507b7');
     end;
 
 	if IsComponentSelected('dlc/012') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc012_leviathans.zip', 'dlc012_leviathans.zip', '765521633a1b4fcf4f9becb178933e7de757507238a81d612150b2c11a3d7018');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc012_leviathans.zip', 'dlc012_leviathans.zip', '7f04d04500c0456c5e997c00570313f07844f852454c5243c67d7b9a6df72219');
     end;
 	if IsComponentSelected('dlc/013') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc013_horizon_signal.zip', 'dlc013_horizon_signal.zip', '97e0d22627cbf77d7d07f21b288e5768ab077983e0904d35cd3bee326d21846a');
     end;
 	if IsComponentSelected('dlc/014') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc014_utopia.zip', 'dlc014_utopia.zip', 'a9540fad19515f7fe5409ffddeafc1684d61cfc23b34557d6a357e0d39a76f95');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc014_utopia.zip', 'dlc014_utopia.zip', 'e8e3c76e3d74506bdd4c1bf59954fea848521c7d8d837e54554f7cca4d7fb4c4');
     end;
 	if IsComponentSelected('dlc/015') then begin
       DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc015_anniversary.zip', 'dlc015_anniversary.zip', '289ec2b8b364368d2c0e69fe72d8ecad59467d744039aa937166a6be7c05d4aa');
     end;
 	if IsComponentSelected('dlc/016') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc016_synthetic_dawn.zip', 'dlc016_synthetic_dawn.zip', 'f3c6fc60b4913487ff880bd514ec544342db9a481eb2e4cb17916e29aa8be610');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc016_synthetic_dawn.zip', 'dlc016_synthetic_dawn.zip', '4b25957d1b2baa47e45435a161b06a38064e3114854ddd8fb0e3515a31056505');
     end;
 	if IsComponentSelected('dlc/017') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc017_apocalypse.zip', 'dlc017_apocalypse.zip', '1424b30d1da461023224ade675b820eb214c9f2af5c3feee7339a27031f88a7b');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc017_apocalypse.zip', 'dlc017_apocalypse.zip', 'b208ad666c87cc792dcc62b3ec79feb6d2d8a8abc0a4274370d2646b12b7debc');
     end;
 	if IsComponentSelected('dlc/018') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc018_humanoids.zip', 'dlc018_humanoids.zip', '52f4ef36f3aeb620baeeadc6035fbaeae2bbe7b60c69c3c89be4fc1f4404f194');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc018_humanoids.zip', 'dlc018_humanoids.zip', '45bfa79572e12e40007d9ba0aee9655d0327bfbb076a9df0e85959c0ae6a12a6');
     end;
 	if IsComponentSelected('dlc/019') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc019_distant_stars.zip', 'dlc019_distant_stars.zip', '85994b6d0797bda32f4710535340808800f6a27dad20084f0cae17dfca337bc3');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc019_distant_stars.zip', 'dlc019_distant_stars.zip', 'e358a40baaa31c9334c6e47134c57bd5e26094f8344dfa20b8bc430ba3858e3c');
     end;
 	if IsComponentSelected('dlc/020') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc020_megacorp.zip', 'dlc020_megacorp.zip', 'f06bd28edc35f8426d54a070ba16b6375bf73afd5f6ddd077cf068841a26dbf9');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc020_megacorp.zip', 'dlc020_megacorp.zip', '747f9d642c3c079fe0731267595bcbe1b33942857d165864a08f863fe507bd1e');
     end;
 	if IsComponentSelected('dlc/021') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc021_ancient_relics.zip', 'dlc021_ancient_relics.zip', '391500c07e024a65d3c4be1e990e4f5d00f3e22bebc791d5ee92a710addefc40');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc021_ancient_relics.zip', 'dlc021_ancient_relics.zip', 'ffaf6ef12826fd442038509e100af3c1d6f718388f74a320fbe707f2c0692a93');
     end;
   if IsComponentSelected('dlc/022') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc022_lithoids.zip', 'dlc022_lithoids.zip', 'a52ddc7048c2ece2ce535e437fb62834649994071538a07cd47a42222e4898c2');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc022_lithoids.zip', 'dlc022_lithoids.zip', 'a7a93a05cd9e777e93744326e725ec2cdf4fdd818e51073d6a96ad93a5a2a34e');
     end;
   if IsComponentSelected('dlc/023') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc023_federations.zip', 'dlc023_federations.zip', '1a2e156ac10f9b67a0ae6f88e3c7ff4d5c2a409602c4000967a8465b7350d1b3');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc023_federations.zip', 'dlc023_federations.zip', 'ad0bc8f5da87dc96a8673fdb943fadbe3adff9b642a4b9936ccd7baca4157875');
     end;
   if IsComponentSelected('dlc/024') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc024_necroids.zip', 'dlc024_necroids.zip', 'cc99bb87716311b9fc4a5ccf93068614f8c7d8f5684a4b4d5dfa89b1ae16ba92');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc024_necroids.zip', 'dlc024_necroids.zip', '9203431aab7ccaed0d29f96c856c1e96e9cd25322ad29de874b46e053454ddd5');
     end;
   if IsComponentSelected('dlc/025') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc025_nemesis.zip', 'dlc025_nemesis.zip', '02c583a1cc1d533a6d66a02948080f426258bd9550d5682a709dd70471fe3270');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc025_nemesis.zip', 'dlc025_nemesis.zip', 'd69be4ee7d8f5bf2bfa3d57ac517d1b1f7fdfe20a4be3a82a0b9ec9aa5d42fda');
     end;
   if IsComponentSelected('dlc/026') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc026_aquatics.zip', 'dlc026_aquatics.zip', 'bc93061624e0dffe7edd60995d78894079d550dc3ff1ca2e861047beed1b2ce2');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc026_aquatics.zip', 'dlc026_aquatics.zip', '4555f75427365a47e0e7f6f06f89925ec6999bba3365ac04ee0c619944116974');
     end;
   if IsComponentSelected('dlc/027') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc027_overlord.zip', 'dlc027_overlord.zip', 'cedf8d32500d2043d2228facb85f5b10f0559901460d2a4b2c67a90365015cc4');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc027_overlord.zip', 'dlc027_overlord.zip', 'baedae58da0328e6e1ceb04d5fcfd303f1bd4ebc77256a1056e6e617559ab44e');
     end;
   if IsComponentSelected('dlc/028') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc028_toxoids.zip', 'dlc028_toxoids.zip', 'ba1ece340c7a79655e4f9b5e2d42dd105bcfd4fbaaa5a602c9bc4640bcfd7c83');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc028_toxoids.zip', 'dlc028_toxoids.zip', 'd9afb04bb30e4211dcf301c78dd061808b859b04fad2bd1fe8a69eaa575de647');
     end;
   if IsComponentSelected('dlc/029') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.8.1/dlc029_firstcontact.zip', 'dlc029_firstcontact.zip', '14d8e5338c06ee0aa1354e9e8613be62315a1d494c8a2ae7eb9012326c394191');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc029_firstcontact.zip', 'dlc029_firstcontact.zip', '20d51dff0160a6107896306993ab125292c77386d56344bfa2917383e4f2935a');
     end;
   if IsComponentSelected('dlc/030') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.10/dlc030_paragon.zip', 'dlc030_paragon.zip', '7d1db1ad806cd893919ad5d6cfdd4431f267e1cc5297bb36d6a7845624798502');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc030_paragon.zip', 'dlc030_paragon.zip', '55489b56b9be79c05e697c64f4a7484e266b8b6b3c4f306c1a35d0648c30d566');
     end;
   if IsComponentSelected('dlc/031') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc031_astral_planes.zip', 'dlc031_astral_planes.zip', '2093181738e2bef0d0777ed43906842c7b58f143c814db50a6e5c4f8ce6c07e0');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc031_astral_planes.zip', 'dlc031_astral_planes.zip', '03f8aac52fbf9ee7881c50a5015dff50856257c20894c3efa4a61829f548b3bb');
     end;
   if IsComponentSelected('dlc/032') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc032_machine_age.zip', 'dlc032_machine_age.zip', 'd6561c91c29e90554299241517e601efedd6fa0983cf8349da916f1184457a16');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc032_machine_age.zip', 'dlc032_machine_age.zip', 'b46e42630613d725c8f992d8f1aed4c7db28f3da9369c5d7a1005075a4fc7312');
     end;
-
+  if IsComponentSelected('dlc/033') then begin
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc033_cosmic_storms.zip', 'dlc033_cosmic_storms.zip', 'b371c59a30a70410cff44bc2524f35be8d6e563c258b278ba7992bafd09ab047');
+    end;
+//  if IsComponentSelected('dlc/034') then begin
+//      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.14/dlc034_grand_archive.zip', 'dlc034_grand_archive.zip', 'e20b30f39d9de0fb68a44ffaf1fa14b40df19c19c6571fa7e15da8898b5925be');
+//    end;
   if IsComponentSelected('dlc/035') then begin
-      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.12/dlc035_rick_the_cube.zip', 'dlc035_rick_the_cube.zip', 'd0aa5f90abaa727caff20091d3caa5ee29e9ff6bdd5f34fedb8a60924b1b48bd');
+      DownloadPage.Add('https://github.com/Russifiers-for-Humans/Stellaris-DLC/releases/download/3.13/dlc035_rick_the_cube.zip', 'dlc035_rick_the_cube.zip', 'fd8ea394296de2f98363e5bd5b91b95275c0d08b931484073e4cb9d28c142210');
     end;
     
     DownloadPage.Show;
